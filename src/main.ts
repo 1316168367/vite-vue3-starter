@@ -7,7 +7,7 @@ import { iViewModule, isValidKey } from './iView-ui'
 import 'view-ui-plus/dist/styles/viewuiplus.css'
 import { judeEnv, isEmpty } from '@/utils/util'
 let app = createApp(App)
-app.provide('isEmpty', isEmpty)
+app.provide('isEmpty', isEmpty) // 使用这种注册方式方便在页面调用
 app.provide('$Message', Message)
 app.provide('$Spin', Spin)
 app.provide('$Modal', Modal)
