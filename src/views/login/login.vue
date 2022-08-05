@@ -51,10 +51,10 @@ onBeforeMount(async () => {
       }
     } else {
       // 不做处理
-      jumpToLogin('')
+      jumpToLogin()
     }
   } else {
-    jumpToLogin('')
+    jumpToLogin()
   }
 })
 const handleTicket = (ticket: any) => {
@@ -91,7 +91,7 @@ const handleTicket = (ticket: any) => {
       $Spin.hide()
     })
 }
-const jumpToLogin = (logout: any) => {
+const jumpToLogin = (logout?: any) => {
   $Spin.show({
     render: (h: any) => {
       return h('div', [
@@ -144,6 +144,7 @@ const jumpToLogin = (logout: any) => {
           }
 
           console.log('remark', resArray.remark)
+          debugger
           window.location.replace(resArray.remark)
         } else {
           $message('认证中心地址获取失败!')
