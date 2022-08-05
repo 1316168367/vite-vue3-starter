@@ -39,10 +39,10 @@ let showName = ref('')
 let dictType = ref('')
 let currentValue = ref('')
 watch(props.value2, (_newValue, _oldValue) => {
-  if (!props.value && props.value != '0') {
+  if (!props.value2 && props.value2 != '0') {
     showName.value = ''
-  } else if (currentValue.value !== props.value) {
-    currentValue.value = props.value
+  } else if (currentValue.value !== props.value2) {
+    currentValue.value = props.value2
     getDictDataAction(props.dictUrl)
   }
 })
