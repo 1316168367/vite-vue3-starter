@@ -4,8 +4,8 @@
 export default {
   title: 'workbenchWeb',
   logo: 'S',
-  key: 'vue3jsj', // 配置主键,目前用于存储
-  indexTitle: '',
+  key: 'jsj', // 配置主键,目前用于存储
+  indexTitle: '脚手架',
   clientId: 'saber', // 客户端id
   clientSecret: 'saber_secret', // 客户端密钥
   tenantMode: true, // 是否开启租户模式
