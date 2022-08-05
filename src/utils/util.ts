@@ -1,16 +1,27 @@
 // import Vue from 'vue'
 import Cookies from 'js-cookie'
 import { Message } from 'view-ui-plus'
+/**
+ * 动态插入css
+ */
 
+export const loadStyle = (url: string) => {
+  const link = document.createElement('link')
+  link.type = 'text/css'
+  link.rel = 'stylesheet'
+  link.href = url
+  const head = document.getElementsByTagName('head')[0]
+  head.appendChild(link)
+}
 /**
  * 用于判断当前的运行环境，包括蜂巢，门户和其他
  */
-export function judeEnv () {
+export function judeEnv() {
   // 判断userAgent中是否拥有标识
-  function matchUserAgent (reg:any) {
+  function matchUserAgent(reg: any) {
     return !!navigator.userAgent.match(reg)
   }
-  function isMobileWeb () {
+  function isMobileWeb() {
     var sUserAgent = navigator.userAgent.toLowerCase()
     if (/ipad|iphone|midp|rv:1.2.3.4|ucweb|android|windows ce|windows mobile/.test(sUserAgent)) {
       return true
@@ -19,7 +30,7 @@ export function judeEnv () {
     }
   }
   // 是否从蜂巢进入
-  function isFengChao () {
+  function isFengChao() {
     let bool = false
     if (matchUserAgent(/CombWebView/)) {
       bool = true
@@ -27,29 +38,27 @@ export function judeEnv () {
     return bool
   }
   // 判断是否是微信环境
-  function getIsWxClient () {
+  function getIsWxClient() {
     if (matchUserAgent(/MicroMessenger/i)) {
       return true
     }
     return false
   }
   // 是否从信息门户进入
-  function isXXMH () {
+  function isXXMH() {
     let bool = false
     type theRequestType = {
-      combStr:string,
-      [key:string]:any
+      combStr: string
+      [key: string]: any
     }
-    function getRequest () {
+    function getRequest() {
       const url = location.search // 获取url中"?"符后的字串
       const theRequest = {} as theRequestType
       if (url.indexOf('?') !== -1) {
         const str = url.substr(1)
         const strs = str.split('&')
         for (let i = 0; i < strs.length; i++) {
-          theRequest[strs[i].split('=')[0]] = decodeURI(
-            strs[i].split('=')[1]
-          )
+          theRequest[strs[i].split('=')[0]] = decodeURI(strs[i].split('=')[1])
         }
       }
       return theRequest
@@ -66,7 +75,7 @@ export function judeEnv () {
     isFengChao: false,
     isXXMH: false,
     isWeChat: false,
-    isMobileWeb: false
+    isMobileWeb: false,
   }
   if (isFengChao()) {
     environment.isFengChao = true
@@ -109,9 +118,9 @@ export function judeEnv () {
 //   }
 // }
 
-export const getObjType = (obj:any):any => {
+export const getObjType = (obj: any): any => {
   var toString = Object.prototype.toString
-  var map:any = {
+  var map: any = {
     '[object Boolean]': 'boolean',
     '[object Number]': 'number',
     '[object String]': 'string',
@@ -121,7 +130,7 @@ export const getObjType = (obj:any):any => {
     '[object RegExp]': 'regExp',
     '[object Undefined]': 'undefined',
     '[object Null]': 'null',
-    '[object Object]': 'object'
+    '[object Object]': 'object',
   }
   if (obj instanceof Element) {
     return 'element'
@@ -129,7 +138,7 @@ export const getObjType = (obj:any):any => {
   return map[toString.call(obj)]
 }
 
-export const isEmpty = (value:any) => {
+export const isEmpty = (value: any) => {
   if (value === null || value === undefined) {
     return true
   }
