@@ -12,7 +12,7 @@ export default (mode) => defineConfig({
       dts: "src/auto-import.d.ts" // 生成 `auto-import.d.ts` 全局声明
     })
   ],
-  base:mode === 'production' ? './' : '/patrioticEducation/',
+  base:mode === 'production' ? './' : '/jsj/',
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src') // 设置 `@` 指向 `src` 目录
