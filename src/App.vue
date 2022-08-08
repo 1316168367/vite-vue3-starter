@@ -19,7 +19,8 @@ const website: any = computed(() => {
 
 onMounted(() => {
   console.log(environment)
-
+  console.log('这是在ipad上编辑的');
+  
   // console.log(environment)
 
   if (environment.isFengChao) {
@@ -65,7 +66,6 @@ const refreshToken = () => {
 <template>
   <router-view />
 </template>
-
 <style>
 #app {
   /* font-family: Avenir, Helvetica, Arial, sans-serif;
